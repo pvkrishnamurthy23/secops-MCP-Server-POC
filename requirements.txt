@@ -1,0 +1,13 @@
+fastapi
+fastmcp
+psycopg2-binary
+openai
+requests
+pandas
+uvicorn
+pytest
+boto3
+botocore
+langchain
+langchain-openai
+langchain-community
