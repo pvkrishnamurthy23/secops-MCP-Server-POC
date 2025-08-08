@@ -5,6 +5,7 @@ import openai
 import re
 import sys
 import os
+import json
 from langchain_community.embeddings import OpenAIEmbeddings
 from langchain_community.vectorstores import Chroma
 from langchain_community.chat_models import ChatOpenAI
@@ -33,11 +34,10 @@ def get_secret():
         get_secret_value_response = client.get_secret_value(
             SecretId=secret_name
         )
+        secret = get_secret_value_response['SecretString']
+        return json.loads(secret)
     except ClientError as e:
-       
-        raise e
-
-    return get_secret_value_response
+        raise RuntimeError(f"Unable to retrieve secret: {e}")
 
 # Load secrets once at startup
 secrets = get_secret()
