@@ -3,12 +3,17 @@ import psycopg2
 import pandas as pd
 import openai
 import re
+import sys
+import os
 from langchain_community.embeddings import OpenAIEmbeddings
 from langchain_community.vectorstores import Chroma
-from langchain.chat_models import ChatOpenAI
+from langchain_community.chat_models import ChatOpenAI
 from langchain.schema import HumanMessage
 import boto3
 from botocore.exceptions import ClientError
+
+# Add the project root to sys.path to import Utils.logger
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 from Utils.logger import logger
 
 
